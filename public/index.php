@@ -1,7 +1,4 @@
 <?php
-use Faker\Factory;
-use JeremyGiberson\Coolsurfin\Model\Post;
-use JeremyGiberson\Coolsurfin\View\TwigProvider;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
