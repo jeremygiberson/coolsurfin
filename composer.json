@@ -19,7 +19,8 @@
         "badcow/lorem-ipsum": "dev-master",
         "league/factory-muffin": "~3.0",
         "league/factory-muffin-faker": "~1.0",
-        "phpunit/phpunit": "^4.5"
+        "phpunit/phpunit": "^4.5",
+        "codeclimate/php-test-reporter": "dev-master"
     },
     "autoload": {
         "psr-4": {
