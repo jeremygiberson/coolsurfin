@@ -7,7 +7,8 @@ addons:
     repo_token: a287a9f92ced095f4f2b73987bcb29e4e4efcf5435eb9958d5b55c4a4480320c
 
 before_script:
+  - composer self-update
   - composer install
 
 script:
-  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml tests
+  - phpunit --coverage-clover build/logs/clover.xml
