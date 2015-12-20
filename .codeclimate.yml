@@ -1,7 +1,2 @@
-languages:
-  Ruby: false
-  JavaScript: true
-  PHP: true
-  Python: false
 exclude_paths:
- - "vendor/*"
+ - "vendor/**/*"
