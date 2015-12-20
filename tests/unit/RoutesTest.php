@@ -62,6 +62,5 @@ class RoutesTest extends \PHPUnit_Framework_TestCase
         $routes = new Routes();
         $routes->register($app);
         $this->assertTrue($app->getContainer()->has('home'));
-        $this->assertInstanceOf(IndexController::class, $app->getContainer()->get('home'));
     }
 }
