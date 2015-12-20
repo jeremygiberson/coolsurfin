@@ -1,7 +1,6 @@
 language: php
 php:
   - 5.5
-  - hhvm
 addons:
   code_climate:
     repo_token: a287a9f92ced095f4f2b73987bcb29e4e4efcf5435eb9958d5b55c4a4480320c
