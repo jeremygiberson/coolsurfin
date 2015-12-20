@@ -12,3 +12,4 @@ before_script:
 
 script:
   - phpunit --coverage-clover build/logs/clover.xml
+  - CODECLIMATE_REPO_TOKEN=a287a9f92ced095f4f2b73987bcb29e4e4efcf5435eb9958d5b55c4a4480320c ./vendor/bin/test-reporter
