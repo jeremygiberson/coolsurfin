@@ -13,6 +13,11 @@ class RoutesTest extends RouteProviderTestCase
     public function setUp()
     {
         parent::setUp();
+        $this->container['captcha_validator'] = function(){
+            return function($request, $response, $callable){
+                return $callable($request, $response);
+            };
+        };
     }
 
     public function test_it_maps_post_read() {

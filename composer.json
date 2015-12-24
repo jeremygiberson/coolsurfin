@@ -12,7 +12,8 @@
     "require": {
         "slim/slim": "^3.0",
         "slim/twig-view": "^2.0",
-        "jimmiw/php-time-ago": "dev-master"
+        "jimmiw/php-time-ago": "dev-master",
+        "zendframework/zend-hydrator": "^2.0@dev"
 
     },
     "require-dev": {

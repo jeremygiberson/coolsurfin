@@ -9,6 +9,8 @@ use Pimple\Container;
 class CreatePostFactory
 {
     public function __invoke(Container $container){
-        return new CreatePost();
+        $storage = $container['post_storage'];
+        $validator = $container['post_validator'];
+        return new CreatePost($storage, $validator);
     }
 }
