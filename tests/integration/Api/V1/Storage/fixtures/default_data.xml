@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<dataset>
+    <posts id="1" author="john" content="abc" created="2010-04-24 17:15:23" />
+    <posts id="2" author="suzy" content="def" created="2010-04-24 17:15:24" />
+    <posts id="3" author="mark" content="hij" created="2010-04-24 17:15:25" />
+    <posts id="4" author="jared" content="klm" created="2010-04-24 17:15:26" />
+    <posts id="5" author="sally" content="nop" created="2010-04-24 17:15:27" />
+</dataset>
