@@ -4,7 +4,7 @@
 namespace Coolsurfin\Unit;
 
 
-use JeremyGiberson\Coolsurfin\Controllers\IndexController;
+use JeremyGiberson\Coolsurfin\Controller\IndexController;
 use JeremyGiberson\Coolsurfin\Routes;
 use Slim\App;
 use Slim\Http\Environment;

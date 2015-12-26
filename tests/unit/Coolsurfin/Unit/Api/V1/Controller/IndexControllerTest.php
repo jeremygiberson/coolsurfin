@@ -4,7 +4,7 @@
 namespace Coolsurfin\Unit\Api\V1\Controller;
 
 
-use JeremyGiberson\Coolsurfin\Controllers\IndexController;
+use JeremyGiberson\Coolsurfin\Controller\IndexController;
 use Slim\Http\Environment;
 use Slim\Http\Request;
 use Slim\Http\Response;

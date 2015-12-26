@@ -4,7 +4,7 @@
 namespace JeremyGiberson\Coolsurfin;
 
 
-use JeremyGiberson\Coolsurfin\Controllers\IndexFactory;
+use JeremyGiberson\Coolsurfin\Controller\IndexFactory;
 use JeremyGiberson\Coolsurfin\Router\RoutesProviderInterface;
 use Slim\App;
 

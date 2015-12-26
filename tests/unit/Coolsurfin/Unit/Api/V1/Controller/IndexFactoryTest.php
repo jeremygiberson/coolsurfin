@@ -4,8 +4,8 @@
 namespace Coolsurfin\Unit\Api\V1\Controller;
 
 
-use JeremyGiberson\Coolsurfin\Controllers\IndexController;
-use JeremyGiberson\Coolsurfin\Controllers\IndexFactory;
+use JeremyGiberson\Coolsurfin\Controller\IndexController;
+use JeremyGiberson\Coolsurfin\Controller\IndexFactory;
 use Pimple\Container;
 use Slim\Views\Twig;
 

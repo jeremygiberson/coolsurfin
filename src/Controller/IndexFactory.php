@@ -1,7 +1,7 @@
 <?php
 
 
-namespace JeremyGiberson\Coolsurfin\Controllers;
+namespace JeremyGiberson\Coolsurfin\Controller;
 
 
 use Pimple\Container;
