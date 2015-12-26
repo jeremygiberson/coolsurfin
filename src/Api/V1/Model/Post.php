@@ -2,6 +2,7 @@
 
 
 namespace JeremyGiberson\Coolsurfin\Api\V1\Model;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM;
 
 /**
@@ -21,6 +22,26 @@ class Post
     private $content;
     /** @Column(type="datetime", name="created") */
     private $created;
+
+    /**
+     * @OneToMany(targetEntity="Post", mappedBy="parent", fetch="EXTRA_LAZY")
+     */
+    private $replies;
+
+    /**
+     * @ManyToOne(targetEntity="Post", inversedBy="replies")
+     * @JoinColumn(name="parent_id", referencedColumnName="id")
+     */
+    private $parent;
+
+    /**
+     * Post constructor.
+     */
+    public function __construct()
+    {
+        $this->replies = new ArrayCollection();
+    }
+
 
     /**
      * @return mixed
@@ -81,6 +102,42 @@ class Post
     public function setCreated($created)
     {
         $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReplies()
+    {
+        return $this->replies;
+    }
+
+    /**
+     * @param mixed $replies
+     * @return self
+     */
+    public function setReplies($replies)
+    {
+        $this->replies = $replies;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param mixed $parent
+     * @return self
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
         return $this;
     }
 

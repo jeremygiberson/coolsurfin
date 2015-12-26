@@ -90,7 +90,7 @@ class PostStorageTest extends \PHPUnit_Extensions_Database_TestCase
         $this->assertNotEmpty($post->getId());
 
         $queryTable = $this->getConnection()->createQueryTable(
-            'posts', 'SELECT * FROM posts'
+            'posts', 'SELECT id, author, content, created FROM posts'
         );
         $expectedTable = $this->createFlatXMLDataSet(__DIR__ . '/fixtures/persisted_post.xml')
             ->getTable("posts");
