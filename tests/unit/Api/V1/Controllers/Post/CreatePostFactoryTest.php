@@ -19,7 +19,7 @@ class CreatePostFactoryTest extends \PHPUnit_Framework_TestCase
         $container = new Container();
         $container['post_storage'] = $this->getmock(PostStorageInterface::class);
         $container['post_validator'] = $this->getMock(ValidatorInterface::class);
-        
+
         $controller = $factory($container);
         $this->assertInstanceOf(CreatePost::class, $controller);
     }
