@@ -90,18 +90,18 @@ class PostStorageTest extends \PHPUnit_Extensions_Database_TestCase
         $this->storage->save($post);
         $this->assertNotEmpty($post->getId());
 
-        $queryTable = $this->getConnection()->createQueryTable(
+        $query_table = $this->getConnection()->createQueryTable(
             'posts', 'SELECT id, author, content, created FROM posts'
         );
-        $expectedTable = $this->createFlatXMLDataSet(__DIR__ . '/fixtures/persisted_post.xml')
+        $expected_table = $this->createFlatXMLDataSet(__DIR__ . '/fixtures/persisted_post.xml')
             ->getTable("posts");
-        $this->assertTablesEqual($expectedTable, $queryTable);
+        $this->assertTablesEqual($expected_table, $query_table);
     }
 
     public function test_it_provides_paginated_list_ordered_by_date_desc()
     {
         $time = '2010-04-24 17:15:25';
-        $queryTable = $this->getConnection()->createQueryTable(
+        $query_table = $this->getConnection()->createQueryTable(
             'posts',
             'SELECT id, author, content, created FROM posts where created <= "'.$time.'" order by created desc'
         );
@@ -111,7 +111,26 @@ class PostStorageTest extends \PHPUnit_Extensions_Database_TestCase
 
         foreach($posts as $index => $post){
             $this->assertInstanceOf(Post::class, $post);
-            $this->assertEquals($queryTable->getValue($index, 'id'), $post->getId());
+            $this->assertEquals($query_table->getValue($index, 'id'), $post->getId());
         }
+    }
+    
+    public function test_it_loads_a_post()
+    {
+        $query_table = $this->getConnection()->createQueryTable(
+            'posts',
+            'SELECT id, author, content, created FROM posts where id = 3'
+        );
+        
+        $post = $this->storage->load(3);
+        $this->assertEquals($query_table->getValue(0, 'id'), $post->getId());
+    }
+
+    /**
+     * @expectedException \JeremyGiberson\Coolsurfin\Api\V1\Exception\EntityNotFound
+     */
+    public function test_it_throws_entity_not_found()
+    {
+        $this->storage->load(19);
     }
 }

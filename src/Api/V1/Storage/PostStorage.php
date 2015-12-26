@@ -6,6 +6,7 @@ namespace JeremyGiberson\Coolsurfin\Api\V1\Storage;
 
 use DateTime;
 use Doctrine\ORM\EntityManager;
+use JeremyGiberson\Coolsurfin\Api\V1\Exception\EntityNotFound;
 use JeremyGiberson\Coolsurfin\Api\V1\Model\Post;
 use JeremyGiberson\Coolsurfin\Api\V1\Paginator\Paginator;
 use JeremyGiberson\Coolsurfin\Api\V1\Paginator\PaginatorInterface;
@@ -50,6 +51,20 @@ class PostStorage implements PostStorageInterface
         $query_builder->setParameter('created', $date_time->format('Y-m-d H:i:s'));
 
         return new Paginator($query_builder, false);
+    }
+
+    /**
+     * @param int $id
+     * @return Post
+     * @throws EntityNotFound
+     */
+    public function load($id)
+    {
+        $post = $this->entity_manager->getRepository(Post::class)->find($id);
+        if($post === null){
+            throw new EntityNotFound();
+        }
+        return $post;
     }
 
 
