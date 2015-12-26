@@ -1,7 +1,7 @@
 <?php
 
 
-namespace JeremyGiberson\Coolsurfin\Api\V1\Controllers\Post;
+namespace JeremyGiberson\Coolsurfin\Api\V1\Controller\Post;
 
 
 use Slim\Http\Request;

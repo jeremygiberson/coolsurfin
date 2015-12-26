@@ -4,7 +4,7 @@
 namespace JeremyGiberson\Coolsurfin\Api\V1;
 
 
-use JeremyGiberson\Coolsurfin\Api\V1\Controllers\Post\ReadPostFactory;
+use JeremyGiberson\Coolsurfin\Api\V1\Controller\Post\ReadPostFactory;
 use JeremyGiberson\Coolsurfin\Api\V1\Middleware\CaptchaValidatorFactory;
 use JeremyGiberson\Coolsurfin\Api\V1\Middleware\ModelMarshaller;
 use JeremyGiberson\Coolsurfin\Router\RoutesProviderInterface;

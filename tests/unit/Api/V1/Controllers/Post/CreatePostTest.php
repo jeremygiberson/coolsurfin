@@ -5,7 +5,7 @@ namespace Coolsurfin\Unit\Api\V1\Controllers\Post;
 
 
 use Coolsurfin\Unit\MockRequestTrait;
-use JeremyGiberson\Coolsurfin\Api\V1\Controllers\Post\CreatePost;
+use JeremyGiberson\Coolsurfin\Api\V1\Controller\Post\CreatePost;
 use JeremyGiberson\Coolsurfin\Api\V1\Model\Post;
 use JeremyGiberson\Coolsurfin\Api\V1\Storage\PostStorageInterface;
 use JeremyGiberson\Coolsurfin\Api\V1\Validator\ValidationResult;

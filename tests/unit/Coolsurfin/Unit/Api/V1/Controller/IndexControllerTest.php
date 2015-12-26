@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Coolsurfin\Unit\Controllers;
+namespace Coolsurfin\Unit\Api\V1\Controller;
 
 
 use JeremyGiberson\Coolsurfin\Controllers\IndexController;
@@ -13,7 +13,7 @@ use Slim\Views\Twig;
 class IndexControllerTest extends \PHPUnit_Framework_TestCase
 {
     public function test_it_returns_200_response(){
-        $twig = new Twig(__DIR__ . '/../Fixtures/Views');
+        $twig = new Twig(__DIR__ . '/fixtures');
         $controller = new IndexController($twig);
 
         $environment = Environment::mock();

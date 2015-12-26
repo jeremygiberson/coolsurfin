@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Coolsurfin\Unit\Controllers;
+namespace Coolsurfin\Unit\Api\V1\Controller;
 
 
 use JeremyGiberson\Coolsurfin\Controllers\IndexController;
