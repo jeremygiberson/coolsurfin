@@ -3,6 +3,9 @@ engines:
     enabled: true
   phpmd:
     enabled: true
+    config:
+      file_extensions: "php"
+      rulesets: "cleancode,codesize,design,naming,unusedcode"
 ratings:
   paths:
   - "**.php"
