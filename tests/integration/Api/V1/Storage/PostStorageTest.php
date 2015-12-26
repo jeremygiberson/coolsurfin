@@ -81,7 +81,8 @@ class PostStorageTest extends \PHPUnit_Extensions_Database_TestCase
         return $this->createFlatXMLDataSet(__DIR__ . '/fixtures/default_data.xml');
     }
 
-    public function test_it_persists_model(){
+    public function test_it_persists_model()
+    {
         $post = new Post();
         $post->setAuthor('joe');
         $post->setContent('hello world');
@@ -95,5 +96,22 @@ class PostStorageTest extends \PHPUnit_Extensions_Database_TestCase
         $expectedTable = $this->createFlatXMLDataSet(__DIR__ . '/fixtures/persisted_post.xml')
             ->getTable("posts");
         $this->assertTablesEqual($expectedTable, $queryTable);
+    }
+
+    public function test_it_provides_paginated_list_ordered_by_date_desc()
+    {
+        $time = '2010-04-24 17:15:25';
+        $queryTable = $this->getConnection()->createQueryTable(
+            'posts',
+            'SELECT id, author, content, created FROM posts where created <= "'.$time.'" order by created desc'
+        );
+
+        /** @var Post[] $posts */
+        $posts = $this->storage->getPostsBefore(new DateTime($time, new DateTimeZone('UTC')));
+
+        foreach($posts as $index => $post){
+            $this->assertInstanceOf(Post::class, $post);
+            $this->assertEquals($queryTable->getValue($index, 'id'), $post->getId());
+        }
     }
 }
