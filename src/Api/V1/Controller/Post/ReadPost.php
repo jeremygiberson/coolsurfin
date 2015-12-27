@@ -4,6 +4,7 @@
 namespace JeremyGiberson\Coolsurfin\Api\V1\Controller\Post;
 
 
+use JeremyGiberson\Coolsurfin\Api\V1\Response\ModelResponse;
 use JeremyGiberson\Coolsurfin\Api\V1\Storage\PostStorageInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -24,6 +25,6 @@ class ReadPost
 
 
     public function __invoke(Request $request, Response $response, array $args) {
-        return $this->storage->load($args['id']);
+        return new ModelResponse($this->storage->load($args['id']));
     }
 }

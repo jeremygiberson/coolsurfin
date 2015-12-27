@@ -7,6 +7,7 @@ namespace Coolsurfin\Unit\Api\V1\Controllers\Post;
 use Coolsurfin\Unit\MockRequestTrait;
 use JeremyGiberson\Coolsurfin\Api\V1\Controller\Post\CreatePost;
 use JeremyGiberson\Coolsurfin\Api\V1\Model\Post;
+use JeremyGiberson\Coolsurfin\Api\V1\Response\ModelResponse;
 use JeremyGiberson\Coolsurfin\Api\V1\Storage\PostStorageInterface;
 use JeremyGiberson\Coolsurfin\Api\V1\Validator\ValidationResult;
 use JeremyGiberson\Coolsurfin\Api\V1\Validator\ValidatorInterface;
@@ -45,8 +46,10 @@ class CreatePostTest extends \PHPUnit_Framework_TestCase
             ->method('save')
             ->with($this->isInstanceOf(Post::class));
 
+        /** @var ModelResponse $result */
         $result = $controller($request, $response);
-        $this->assertInstanceOf(Post::class, $result);
+        $this->assertInstanceOf(ModelResponse::class, $result);
+        $this->assertInstanceOf(Post::class, $result->getModel());
     }
 
     public function test_it_returns_a_validation_result_on_invalid_post_data(){

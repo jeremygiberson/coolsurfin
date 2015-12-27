@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bb597f621d8059a5b3bd46e3584efb33",
-    "content-hash": "684f3cf9d229529125daa2677454b367",
+    "hash": "02d68949e794703c845b32eee5227c6c",
+    "content-hash": "c88c63a21d97e5c89cfc7b7ffcee0038",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1295,16 +1295,16 @@
         },
         {
             "name": "zendframework/zend-hydrator",
-            "version": "dev-develop",
+            "version": "dev-issue/12",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zendframework/zend-hydrator.git",
-                "reference": "c7efd0a80f92cb0df0e87c1620cdacc93c2156e7"
+                "url": "https://github.com/jeremygiberson/zend-hydrator.git",
+                "reference": "b235877c5c9a585fbc66d6e65aae0aa31dcf36ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/c7efd0a80f92cb0df0e87c1620cdacc93c2156e7",
-                "reference": "c7efd0a80f92cb0df0e87c1620cdacc93c2156e7",
+                "url": "https://api.github.com/repos/jeremygiberson/zend-hydrator/zipball/b235877c5c9a585fbc66d6e65aae0aa31dcf36ba",
+                "reference": "b235877c5c9a585fbc66d6e65aae0aa31dcf36ba",
                 "shasum": ""
             },
             "require": {
@@ -1315,8 +1315,7 @@
                 "phpunit/phpunit": "~4.0",
                 "squizlabs/php_codesniffer": "^2.0@dev",
                 "zendframework/zend-eventmanager": "^2.5.1",
-                "zendframework/zend-filter": "^2.5.1",
-                "zendframework/zend-inputfilter": "^2.5.1",
+                "zendframework/zend-inputfilter": "^2.5",
                 "zendframework/zend-serializer": "^2.5.1",
                 "zendframework/zend-servicemanager": "^2.5.1"
             },
@@ -1338,16 +1337,24 @@
                     "Zend\\Hydrator\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "ZendTest\\Hydrator\\": "test/"
+                }
+            },
             "license": [
                 "BSD-3-Clause"
             ],
+            "description": " ",
             "homepage": "https://github.com/zendframework/zend-hydrator",
             "keywords": [
                 "hydrator",
                 "zf2"
             ],
-            "time": "2015-10-21 18:20:16"
+            "support": {
+                "source": "https://github.com/jeremygiberson/zend-hydrator/tree/issue-12"
+            },
+            "time": "2015-12-27 04:03:13"
         },
         {
             "name": "zendframework/zend-stdlib",

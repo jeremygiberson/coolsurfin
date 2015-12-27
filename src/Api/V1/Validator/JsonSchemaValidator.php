@@ -13,11 +13,11 @@ class JsonSchemaValidator implements ValidatorInterface
 
     /**
      * JsonSchemaValidator constructor.
+     * @param $schema
      */
-    public function __construct($path_to_schema)
+    public function __construct($schema)
     {
-        $retriever = new UriRetriever;
-        $this->schema = $retriever->retrieve('file://' . $path_to_schema);
+        $this->schema = $schema;
     }
 
 

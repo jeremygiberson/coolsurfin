@@ -4,7 +4,9 @@
 namespace JeremyGiberson\Coolsurfin\Api\V1\Controller\Post;
 
 
+use DateTimeZone;
 use JeremyGiberson\Coolsurfin\Api\V1\Model\Post;
+use JeremyGiberson\Coolsurfin\Api\V1\Response\ModelResponse;
 use JeremyGiberson\Coolsurfin\Api\V1\Storage\PostStorageInterface;
 use JeremyGiberson\Coolsurfin\Api\V1\Validator\ValidatorInterface;
 use Slim\Http\Request;
@@ -31,7 +33,7 @@ class CreatePost
 
 
     public function __invoke(Request $request, Response $response){
-        $validation = $this->validator->validate($request->getParams());
+        $validation = $this->validator->validate((object)$request->getParams());
 
         if(!$validation->isValid()){
             return $validation;
@@ -39,9 +41,12 @@ class CreatePost
 
         $hydrator = new ClassMethods();
         $post = new Post();
+        if (!$post->getCreated()){
+            $post->setCreated(new \DateTime('now', new DateTimeZone('UTC')));
+        }
         $hydrator->hydrate($request->getParams(), $post);
         $this->storage->save($post);
 
-        return $post;
+        return new ModelResponse($post);
     }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "id": { "type": "integer" },
+    "date": { "type": "string" },
+    "author": { "type": "string" },
+    "content": { "type": "string" }
+  },
+  "required": ["author", "content"],
+  "additionalProperties": false
+}

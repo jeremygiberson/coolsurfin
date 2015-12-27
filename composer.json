@@ -9,11 +9,17 @@
         }
     ],
     "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:jeremygiberson/zend-hydrator.git"
+        }
+    ],
     "require": {
         "slim/slim": "^3.0",
         "slim/twig-view": "^2.0",
         "jimmiw/php-time-ago": "dev-master",
-        "zendframework/zend-hydrator": "^2.0@dev",
+        "zendframework/zend-hydrator": "dev-issue/12",
         "justinrainbow/json-schema": "~1.3",
         "doctrine/orm": "~2.5",
         "doctrine/migrations": "^1.2"
