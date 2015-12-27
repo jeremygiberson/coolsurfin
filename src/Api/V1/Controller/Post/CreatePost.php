@@ -34,7 +34,10 @@ class CreatePost
 
 
     public function __invoke(Request $request, Response $response) {
-        $validation = $this->validator->validate((object)$request->getParams());
+        $data = $request->getParams();
+        unset($data['recaptcha']);
+        
+        $validation = $this->validator->validate((object)$data);
 
         if (!$validation->isValid()) {
             return new ValidationResponse($validation);
@@ -42,10 +45,12 @@ class CreatePost
 
         $hydrator = new ClassMethods();
         $post = new Post();
+        $hydrator->hydrate($data, $post);
+
         if (!$post->getCreated()) {
             $post->setCreated(new \DateTime('now', new DateTimeZone('UTC')));
         }
-        $hydrator->hydrate($request->getParams(), $post);
+
         $this->storage->save($post);
 
         return new ModelResponse($post);

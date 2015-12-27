@@ -7,6 +7,9 @@ require '../vendor/autoload.php';
 
 date_default_timezone_set('UTC');
 
+$dotenv = new Dotenv\Dotenv(__DIR__.'/../');
+$dotenv->load();
+
 $app = new \Slim\App([
     'settings' => [
         'displayErrorDetails' => true

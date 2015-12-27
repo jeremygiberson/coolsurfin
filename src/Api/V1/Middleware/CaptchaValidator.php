@@ -23,16 +23,14 @@ class CaptchaValidator
     }
 
     public function __invoke(Request $request, Response $response, callable $callable) {
-        $validation = $this->validator->validate($request->getParams());
+        $validation = $this->validator->validate($request->getParam('recaptcha'));
         if ($validation->isValid()) {
             return $callable($request, $response);
         }
 
-        $response = $response->withStatus(403);
-        $response->write(json_encode([
-            'errors' => ['You did not pass human verification']
+        $response = $response->withStatus(403, 'You did not pass human verification');
+        return $response->write(json_encode([
+            'errors' => $validation->getErrors()
         ]));
-
-
     }
 }
