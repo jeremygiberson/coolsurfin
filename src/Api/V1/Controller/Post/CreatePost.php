@@ -35,8 +35,8 @@ class CreatePost
 
     public function __invoke(Request $request, Response $response) {
         $data = $request->getParams();
-        unset($data['recaptcha']);
-        
+        unset($data['g-recaptcha-response']);
+
         $validation = $this->validator->validate((object)$data);
 
         if (!$validation->isValid()) {

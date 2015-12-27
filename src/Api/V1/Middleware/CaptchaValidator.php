@@ -23,7 +23,7 @@ class CaptchaValidator
     }
 
     public function __invoke(Request $request, Response $response, callable $callable) {
-        $validation = $this->validator->validate($request->getParam('recaptcha'));
+        $validation = $this->validator->validate($request->getParam('g-recaptcha-response'));
         if ($validation->isValid()) {
             return $callable($request, $response);
         }
