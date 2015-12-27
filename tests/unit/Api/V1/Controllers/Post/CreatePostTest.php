@@ -8,6 +8,7 @@ use Coolsurfin\Unit\MockRequestTrait;
 use JeremyGiberson\Coolsurfin\Api\V1\Controller\Post\CreatePost;
 use JeremyGiberson\Coolsurfin\Api\V1\Model\Post;
 use JeremyGiberson\Coolsurfin\Api\V1\Response\ModelResponse;
+use JeremyGiberson\Coolsurfin\Api\V1\Response\ValidationResponse;
 use JeremyGiberson\Coolsurfin\Api\V1\Storage\PostStorageInterface;
 use JeremyGiberson\Coolsurfin\Api\V1\Validator\ValidationResult;
 use JeremyGiberson\Coolsurfin\Api\V1\Validator\ValidatorInterface;
@@ -61,10 +62,10 @@ class CreatePostTest extends \PHPUnit_Framework_TestCase
             ->method('validate')
             ->willReturn(new ValidationResult(false, ['foo'=>'bar']));
 
-        /** @var ValidationResult $result */
+        /** @var ValidationResponse $result */
         $result = $controller($request, $response);
-        $this->assertInstanceOf(ValidationResult::class, $result);
-        $this->assertFalse($result->isValid());
+        $this->assertInstanceOf(ValidationResponse::class, $result);
+        $this->assertFalse($result->getValidationResult()->isValid());
     }
 
 }
