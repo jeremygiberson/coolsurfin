@@ -4,6 +4,7 @@
 namespace JeremyGiberson\Coolsurfin\Api\V1\Middleware;
 
 
+use JeremyGiberson\Coolsurfin\Api\V1\Model\Post;
 use ReflectionClass;
 use Slim\Http\Request;
 use Slim\Http\Response;
