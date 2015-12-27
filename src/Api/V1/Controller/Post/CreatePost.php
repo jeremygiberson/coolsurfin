@@ -7,6 +7,7 @@ namespace JeremyGiberson\Coolsurfin\Api\V1\Controller\Post;
 use DateTimeZone;
 use JeremyGiberson\Coolsurfin\Api\V1\Model\Post;
 use JeremyGiberson\Coolsurfin\Api\V1\Response\ModelResponse;
+use JeremyGiberson\Coolsurfin\Api\V1\Response\ValidationResponse;
 use JeremyGiberson\Coolsurfin\Api\V1\Storage\PostStorageInterface;
 use JeremyGiberson\Coolsurfin\Api\V1\Validator\ValidatorInterface;
 use Slim\Http\Request;
@@ -36,7 +37,7 @@ class CreatePost
         $validation = $this->validator->validate((object)$request->getParams());
 
         if(!$validation->isValid()){
-            return $validation;
+            return new ValidationResponse($validation);
         }
 
         $hydrator = new ClassMethods();

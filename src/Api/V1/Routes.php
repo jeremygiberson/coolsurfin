@@ -8,7 +8,9 @@ use JeremyGiberson\Coolsurfin\Api\V1\Controller\Post\CreatePostFactory;
 use JeremyGiberson\Coolsurfin\Api\V1\Controller\Post\ReadPostFactory;
 use JeremyGiberson\Coolsurfin\Api\V1\Doctrine\EntityManagerProvider;
 use JeremyGiberson\Coolsurfin\Api\V1\Middleware\CaptchaValidatorFactory;
+use JeremyGiberson\Coolsurfin\Api\V1\Middleware\EntityNotFoundMiddleware;
 use JeremyGiberson\Coolsurfin\Api\V1\Middleware\ModelMarshaller;
+use JeremyGiberson\Coolsurfin\Api\V1\Middleware\ValidationMarshaller;
 use JeremyGiberson\Coolsurfin\Api\V1\Storage\PostStorageFactory;
 use JeremyGiberson\Coolsurfin\Api\V1\Validator\JsonSchemaValidatorFactory;
 use JeremyGiberson\Coolsurfin\Router\RoutesProviderInterface;
@@ -41,6 +43,9 @@ class Routes implements RoutesProviderInterface
 //            ->add('captcha_validator'); // this makes unit testing hard
             ;
             $app->post('/posts/', 'create_post_factory');
-        })->add(new ModelMarshaller());
+        })
+            ->add(new ModelMarshaller())
+            ->add(new ValidationMarshaller())
+            ->add(new EntityNotFoundMiddleware());
     }
 }
