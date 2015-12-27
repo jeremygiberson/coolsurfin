@@ -1,0 +1,4 @@
+name: Coolsurfin Database Migrations
+migrations_namespace: JeremyGiberson\Coolsurfin\Migrations
+table_name: migration_versions
+migrations_directory: src/Migrations
