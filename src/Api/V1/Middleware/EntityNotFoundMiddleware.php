@@ -10,7 +10,7 @@ use Slim\Http\Response;
 
 class EntityNotFoundMiddleware
 {
-    public function __invoke(Request $request, Response $response, callable $next){
+    public function __invoke(Request $request, Response $response, callable $next) {
         try {
             return $next($request, $response);
         } catch (EntityNotFound $e) {

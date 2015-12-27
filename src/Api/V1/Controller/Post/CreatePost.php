@@ -33,16 +33,16 @@ class CreatePost
     }
 
 
-    public function __invoke(Request $request, Response $response){
+    public function __invoke(Request $request, Response $response) {
         $validation = $this->validator->validate((object)$request->getParams());
 
-        if(!$validation->isValid()){
+        if (!$validation->isValid()) {
             return new ValidationResponse($validation);
         }
 
         $hydrator = new ClassMethods();
         $post = new Post();
-        if (!$post->getCreated()){
+        if (!$post->getCreated()) {
             $post->setCreated(new \DateTime('now', new DateTimeZone('UTC')));
         }
         $hydrator->hydrate($request->getParams(), $post);

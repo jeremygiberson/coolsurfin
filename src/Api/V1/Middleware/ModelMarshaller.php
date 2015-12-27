@@ -11,9 +11,9 @@ use Zend\Hydrator\ClassMethods;
 
 class ModelMarshaller
 {
-    public function __invoke(Request $request, Response $response, callable $callable){
+    public function __invoke(Request $request, Response $response, callable $callable) {
         $result = $callable($request, $response);
-        if (!$result instanceof ModelResponse){
+        if (!$result instanceof ModelResponse) {
             return $result;
         }
 

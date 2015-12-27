@@ -8,8 +8,8 @@ use Pimple\Container;
 
 class IndexFactory
 {
-    public function __invoke(Container $container){
-        if(!isset($container['view'])){
+    public function __invoke(Container $container) {
+        if (!isset($container['view'])) {
             throw new \RuntimeException('DI container does not provide `view`');
         }
 

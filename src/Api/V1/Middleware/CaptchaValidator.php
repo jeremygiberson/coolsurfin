@@ -22,9 +22,9 @@ class CaptchaValidator
         $this->validator = $validator;
     }
 
-    public function __invoke(Request $request, Response $response, callable $callable){
+    public function __invoke(Request $request, Response $response, callable $callable) {
         $validation = $this->validator->validate($request->getParams());
-        if($validation->isValid()){
+        if ($validation->isValid()) {
             return $callable($request, $response);
         }
 
