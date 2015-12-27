@@ -10,10 +10,10 @@ use Slim\Http\Response;
 
 class ValidationMarshaller
 {
-    public function __invoke(Request $request, Response $response, callable $callable){
+    public function __invoke(Request $request, Response $response, callable $callable) {
         $result = $callable($request, $response);
 
-        if(! $result instanceof ValidationResponse){
+        if (!$result instanceof ValidationResponse) {
             return $result;
         }
 

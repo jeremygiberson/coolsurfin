@@ -8,7 +8,7 @@ use Pimple\Container;
 
 class PostStorageFactory
 {
-    public function __invoke(Container $container){
+    public function __invoke(Container $container) {
         $entity_manager = $container['entity_manager'];
         return new PostStorage($entity_manager);
     }

@@ -26,7 +26,7 @@ class ValidationResult
         return $this->valid;
     }
 
-    public function getErrors(){
+    public function getErrors() {
         return $this->errors;
     }
 }

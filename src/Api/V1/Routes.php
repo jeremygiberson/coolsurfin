@@ -35,7 +35,7 @@ class Routes implements RoutesProviderInterface
         $entity_manager_provider = new EntityManagerProvider();
         $entity_manager_provider->register($container);
 
-        $app->group('/api/v1', function(){
+        $app->group('/api/v1', function() {
             /** @var App $app */
             $app = $this;
 
