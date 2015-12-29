@@ -6,12 +6,12 @@ namespace Coolsurfin\Unit;
 
 use Pimple\Container;
 use Slim\App;
-use Slim\Http\Environment;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
 abstract class RouteProviderTestCase extends \PHPUnit_Framework_TestCase
 {
+    use MockRequestTrait;
     /** @var  App */
     protected $app;
     /** @var  Container */
@@ -28,15 +28,6 @@ abstract class RouteProviderTestCase extends \PHPUnit_Framework_TestCase
         $this->app = new App();
         $this->container = $this->app->getContainer();
 
-    }
-
-    protected function mock_request($path = '/', $method = 'GET'){
-        $environment = Environment::mock([
-            'REQUEST_URI' => $path,
-            'REQUEST_METHOD' => $method
-        ]);
-
-        $this->container['request'] = Request::createFromEnvironment($environment);
     }
 
     protected function factory_for_mock_middleware_with_expected_invocation(){
