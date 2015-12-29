@@ -1,10 +1,41 @@
 <html>
     <head>
         <script src='https://www.google.com/recaptcha/api.js'></script>
+        <script src='js/jquery-2.1.4.min.js'></script>
+        <script type="text/javascript">
+            function load(id){
+                $.ajax({
+                    url: "{{ path_for('get_posts', { 'id': null })  }}"+id,
+                    success: function (data) {
+                        $('#posts').html(data);
+                    }
+                });
+            }
+            $(document).ready(function(){
+                load(1);
+            });
+            function post(form){
+                var url = "{{ path_for('create_post') }}";
+                var formData = $(form).serialize();
+                $.ajax({
+                    'url': url,
+                    type: "POST",
+                    dataType: "json",
+                    data: formData,
+                    success: function(data){
+                        load(data.id);
+                    }
+                });
+            }
+        </script>
     </head>
     <body>
         Hello Coolsurfin.com
-        <form method="get" action="#">
+        <div id="posts"></div>
+        <form id="form" onsubmit="post(this); return false;">
+            <label for="author">Name</label><input id='author' name='author' type="text"/>
+            <label for="content">Message</label>
+            <textarea id="content" name="content"></textarea>
             <div class="g-recaptcha" data-sitekey="6LdLwRITAAAAAB85c5mvM2S3b2onWewY2yOt_XdH"></div>
             <button type="submit">submit</button>
         </form>

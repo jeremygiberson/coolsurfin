@@ -42,9 +42,11 @@ class Routes implements RoutesProviderInterface
             /** @var App $app */
             $app = $this;
 
-            $app->get('/posts/{id:[0-9]*}', 'read_post_factory');
+            $app->get('/posts/{id:[0-9]*}', 'read_post_factory')
+                ->setName('get_posts');
 
             $app->post('/posts/', 'create_post_factory')
+                ->setName('create_post')
                 ->add(new CaptchaValidator($validator_factory($container)));
         })
             ->add(new ModelMarshaller())
