@@ -1,7 +1,7 @@
 <?php
 namespace JeremyGiberson\Coolsurfin\Api\V1\Paginator;
 
-interface PaginatorInterface
+interface PaginatorInterface extends \Countable
 {
     /**
      * @return int

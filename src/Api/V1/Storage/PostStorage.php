@@ -50,7 +50,11 @@ class PostStorage implements PostStorageInterface
             ->orderBy('p.created', 'DESC');
         $query_builder->setParameter('created', $date_time->format('Y-m-d H:i:s'));
 
-        return new Paginator($query_builder, false);
+        $paginator = new Paginator($query_builder, false);
+        // provide sane defaults
+        $paginator->setLimit(25);
+        $paginator->setOffset(0);
+        return $paginator;
     }
 
     /**
