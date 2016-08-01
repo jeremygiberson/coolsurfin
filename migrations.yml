@@ -1,0 +1,4 @@
+name: Coolsurfin Migrations
+migrations_namespace: CoolsurfinMigrations
+table_name: doctrine_migration_versions
+migrations_directory: migrations/

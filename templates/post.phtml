@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coolsurfin.com</title>
+    <link href='https://fonts.googleapis.com/css?family=Passion+One|Alfa+Slab+One|Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+
+        body {
+            font-weight: 400;
+            font-style: normal;
+            font-size: 18px;
+            line-height: 39px;
+            max-width: 760px;
+            padding: 39px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-family: inherit;
+            font-weight: 600;
+            font-style: inherit;
+            font-size: 61px;
+            line-height: 78px;
+            margin-top: 39px;
+            margin-bottom: 0px;
+        }
+        h2 {
+            font-family: inherit;
+            font-weight: 600;
+            font-style: inherit;
+            font-size: 40px;
+            line-height: 78px;
+            margin-top: 39px;
+            margin-bottom: 39px;
+        }
+        h3 {
+            font-family: inherit;
+            font-weight: 600;
+            font-style: inherit;
+            font-size: 27px;
+            line-height: 39px;
+            margin-top: 39px;
+            margin-bottom: 0px;
+        }
+        h4 {
+            font-family: inherit;
+            font-weight: 600;
+            font-style: inherit;
+            font-size: 18px;
+            line-height: 39px;
+            margin-top: 39px;
+            margin-bottom: 0px;
+        }
+        h5 {
+            font-family: inherit;
+            font-weight: 400;
+            font-style: italic;
+            font-size: 18px;
+            line-height: 39px;
+            margin-top: 39px;
+            margin-bottom: 0px;
+        }
+        p, ul, ol, pre, table, blockquote {
+            margin-top: 0px;
+            margin-bottom: 39px;
+        }
+        ul ul, ol ol, ul ol, ol ul {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        hr {
+            border: 1px solid;
+            margin: -1px 0;
+        }
+        b, strong, em, small, code {
+            line-height: 1;
+        }
+        sup {
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline;
+            top: -0.5em;
+        }
+        sub {
+            bottom: -0.25em;
+        }
+        a {
+            color: #268ED9;
+        }
+        .gridlover-grid {
+            background-image: linear-gradient(to bottom, hsla(200, 100%, 50%, .3) 1px, transparent 1px);
+            background-position: left -1px;
+            background-repeat: repeat;
+            background-size: 39px 39px;
+        }
+        .gridlover-grid body {
+            box-shadow: 1px 0px 0px hsla(200, 100%, 50%, .3), -1px 0px 0px hsla(200, 100%, 50%, .3);
+        }
+
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        h1 {
+            color: #2d2d2d;
+            font-family: 'Alfa Slab One', cursive;
+            letter-spacing: 3pt;
+        }
+        p {
+            color: #555555 !important;
+        }
+
+        .icon-identity {
+            background-image: url("{{ comment.getIdenticonImageDataUri(16) }}");
+            background-position: center center;
+            width: 15.3px;
+            height: 15.3px;
+        }
+
+    </style>
+    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
+    </script>
+</head>
+<body>
+<div>
+    <h1>{{ comment.getHeadline() }}</h1>
+    <p>
+        {{ comment.getText() }}
+    </p>
+
+    <small class="pull-right">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ comment.getAuthor() }}
+        {% if comment.hasSecret() %}
+        <span class="glyphicon icon-identity" aria-hidden="true"></span>
+        {% endif %}
+        <br/>
+        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{ comment.getPostedAt() | date('d/m/Y H:i a', timezone="UTC") }}
+        <br/>
+    </small>
+
+    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#postModal">
+        new comment
+    </button>
+
+    {% if comment.hasMore() %}
+    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+    <a href="{{ path_for('post', { 'id': comment.getId() - 1 }) }}" class="btn btn-primary btn-xs">Previous</a>
+    {% else %}
+    <button type="button" class="btn btn-disabled btn-xs">the beginning</button>
+    {% endif %}
+    <!-- Indicates a successful or positive action -->
+    <!-- <button type="button" class="btn btn-success btn-xs">Previous in thread</button> -->
+
+    {% include 'post-form.phtml' %}
+</div>
+</body>
+</html>
