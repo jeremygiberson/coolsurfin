@@ -24,9 +24,9 @@ class CommentViewModel implements CommentInterface {
         $this->comment = $comment;
 
         preg_match_all('/(?:[^\.,?!])[\.,?!]/', $comment->getText(), $matches, PREG_OFFSET_CAPTURE);
-        if(!empty($matches) && count($matches[0]) > 1) {
-            $this->headline = substr($comment->getText(), 0, $matches[0][0][1]+2);
-            $this->body = substr($comment->getText(), $matches[0][0][1]+2);
+        if (!empty($matches) && count($matches[0]) > 1) {
+            $this->headline = substr($comment->getText(), 0, $matches[0][0][1] + 2);
+            $this->body = substr($comment->getText(), $matches[0][0][1] + 2);
         } else {
             $this->headline = 'untitled';
             $this->body = $comment->getText();
@@ -83,7 +83,7 @@ class CommentViewModel implements CommentInterface {
         return $this->comment->getSecretHash() !== null;
     }
 
-    public function getIdenticonImageDataUri($size=32)
+    public function getIdenticonImageDataUri($size = 32)
     {
         $identicon = new \Identicon\Identicon();
         return $identicon->getImageDataUri($this->getSecretHash(), $size);
