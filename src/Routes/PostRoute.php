@@ -32,7 +32,7 @@ class PostRoute
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response)
     {
         $id = $request->getAttribute('id');
-        if (! $comment = $this->repository->find($id))
+        if (!$comment = $this->repository->find($id))
         {
             return $response->withStatus(404, 'post not found');
         }
