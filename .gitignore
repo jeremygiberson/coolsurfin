@@ -5,3 +5,5 @@
 .DS_Store
 .idea/
 doctrine-config.php
+bin/
+data/
