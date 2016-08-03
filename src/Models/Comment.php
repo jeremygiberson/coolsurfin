@@ -35,7 +35,7 @@ class Comment implements CommentInterface
         $comment->text = $text;
         $comment->postedAt = new DateTime('now', new DateTimeZone('UTC'));
         if ($secret !== null) {
-            $comment->secretHash = password_hash($secret, PASSWORD_DEFAULT);
+            $comment->secretHash = password_hash($author. $secret, PASSWORD_DEFAULT);
         } else {
             $comment->secretHash = null;
         }
