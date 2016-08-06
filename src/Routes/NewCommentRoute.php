@@ -35,7 +35,7 @@ class NewCommentRoute
         $secret = empty($post['secret']) ? null : $post['secret'];
         $author = empty($post['author']) ? 'anonymous' : $post['author'];
 
-        if(empty($post['comment'])) {
+        if (empty($post['comment'])) {
             return $response->withStatus(400, 'you have to post something...');
         }
 

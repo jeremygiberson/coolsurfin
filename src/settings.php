@@ -1,6 +1,6 @@
 <?php
 
-$doctrineConfigPath = file_exists(__DIR__ . '/../doctrine-config.php') ? __DIR__ . '/../doctrine-config.php' : __DIR__ . '/../doctrine-config.php.dist';
+$doctrineConfigPath = file_exists(__DIR__.'/../doctrine-config.php') ? __DIR__.'/../doctrine-config.php' : __DIR__.'/../doctrine-config.php.dist';
 $doctrineConfig = require $doctrineConfigPath;
 
 
@@ -11,13 +11,13 @@ return [
 
         // Renderer settings
         'renderer' => [
-            'template_path' => __DIR__ . '/../templates/',
+            'template_path' => __DIR__.'/../templates/',
         ],
 
         // Monolog settings
         'logger' => [
             'name' => 'slim-app',
-            'path' => __DIR__ . '/../logs/app.log',
+            'path' => __DIR__.'/../logs/app.log',
         ],
 
         'doctrine' => $doctrineConfig
