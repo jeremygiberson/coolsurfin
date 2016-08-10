@@ -47,11 +47,6 @@ $container['em'] = function($container) {
     return EntityManager::create($config['connection'], $metaConfig);
 };
 
-$container['.env'] = function($container) {
-    $dotenv = new Dotenv\Dotenv(__DIR__.'/../');
-    $dotenv->load();
-    return $dotenv;
-};
 
 $container[IndexRoute::class] = function($container) {
     $em = $container['em'];
@@ -71,4 +66,11 @@ $container[NewCommentRoute::class] = function($container) {
     $em = $container['em'];
     $router = $container['router'];
     return new NewCommentRoute($em, $router);
+};
+
+$container[\Coolsurfin\Routes\ModerateRoute::class] = function($container) {
+    $em = $container['em'];
+    $repository = $em->getRepository(Comment::class);
+    $secret = getenv('SECRET');
+    return new \Coolsurfin\Routes\ModerateRoute($repository, $secret);  
 };
