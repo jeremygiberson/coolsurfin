@@ -3,9 +3,9 @@ return [
     'metadata' => [
         'devMode' => true,
         'paths' => [
-            __DIR__ . '/models/' => 'Coolsurfin\Models'
+            __DIR__ . '/models/'
         ],
-        'configCallable' => ['\Doctrine\ORM\Tools\Setup', 'createYAMLMetadataConfiguration']
+        'configCallable' => ['\Doctrine\ORM\Tools\Setup', 'createAnnotationMetadataConfiguration']
     ],
     'connection' => [
         'driver'   => 'pdo_sqlite',

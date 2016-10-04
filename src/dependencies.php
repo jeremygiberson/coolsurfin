@@ -66,7 +66,14 @@ $container[NewCommentRoute::class] = function($container) {
     $em = $container['em'];
     $router = $container['router'];
     $recaptcha = new \Coolsurfin\Services\ReCaptcha(new Client(),
-        $_ENV['CAPTCHA'],
+        getenv('CAPTCHA'),
         $_SERVER['REMOTE_ADDR']);
     return new NewCommentRoute($em, $router, $recaptcha);
+};
+
+$container[\Coolsurfin\Routes\ModerateRoute::class] = function($container) {
+    $em = $container['em'];
+    $repository = $em->getRepository(Comment::class);
+    $secret = getenv('SECRET');
+    return new \Coolsurfin\Routes\ModerateRoute($repository, $secret);
 };
