@@ -1,4 +1,6 @@
 <?php
+$dotenv = new Dotenv\Dotenv(__DIR__.'/../');
+$dotenv->load();
 
 $doctrineConfigPath = file_exists(__DIR__.'/../doctrine-config.php') ? __DIR__.'/../doctrine-config.php' : __DIR__.'/../doctrine-config.php.dist';
 $doctrineConfig = require $doctrineConfigPath;

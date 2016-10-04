@@ -6,6 +6,7 @@ use Coolsurfin\Routes\IndexRoute;
 use Coolsurfin\Routes\NewCommentRoute;
 use Coolsurfin\Routes\PostRoute;
 use Doctrine\ORM\EntityManager;
+use GuzzleHttp\Client;
 use Slim\Views\Twig;
 
 $container = $app->getContainer();
@@ -47,12 +48,6 @@ $container['em'] = function($container) {
     return EntityManager::create($config['connection'], $metaConfig);
 };
 
-$container['.env'] = function($container) {
-    $dotenv = new Dotenv\Dotenv(__DIR__.'/../');
-    $dotenv->load();
-    return $dotenv;
-};
-
 $container[IndexRoute::class] = function($container) {
     $em = $container['em'];
     $repository = $em->getRepository(Comment::class);
@@ -70,5 +65,8 @@ $container[PostRoute::class] = function($container) {
 $container[NewCommentRoute::class] = function($container) {
     $em = $container['em'];
     $router = $container['router'];
-    return new NewCommentRoute($em, $router);
+    $recaptcha = new \Coolsurfin\Services\ReCaptcha(new Client(),
+        $_ENV['CAPTCHA'],
+        $_SERVER['REMOTE_ADDR']);
+    return new NewCommentRoute($em, $router, $recaptcha);
 };
