@@ -20,7 +20,8 @@
         "doctrine/orm": "^2.5",
         "doctrine/migrations": "^1.4",
         "vlucas/phpdotenv": "^2.3",
-        "yzalis/identicon": "^1.1"
+        "yzalis/identicon": "^1.1",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "autoload": {
         "psr-4": {
